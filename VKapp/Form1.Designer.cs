@@ -30,32 +30,43 @@ namespace VKapp
         private void InitializeComponent()
         {
             this.btnMakeRequests = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUserId = new System.Windows.Forms.TextBox();
+            this.txtRespone = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnMakeRequests
             // 
-            this.btnMakeRequests.Location = new System.Drawing.Point(57, 91);
+            this.btnMakeRequests.Location = new System.Drawing.Point(12, 113);
             this.btnMakeRequests.Name = "btnMakeRequests";
-            this.btnMakeRequests.Size = new System.Drawing.Size(117, 48);
+            this.btnMakeRequests.Size = new System.Drawing.Size(162, 32);
             this.btnMakeRequests.TabIndex = 0;
-            this.btnMakeRequests.Text = "Сделать запросс";
+            this.btnMakeRequests.Text = "Сделать запрос";
             this.btnMakeRequests.UseVisualStyleBackColor = true;
+            this.btnMakeRequests.Click += new System.EventHandler(this.btnMakeRequests_Click);
             // 
-            // textBox1
+            // txtUserId
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "166766754";
+            this.txtUserId.Location = new System.Drawing.Point(12, 73);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.Size = new System.Drawing.Size(162, 23);
+            this.txtUserId.TabIndex = 1;
+            this.txtUserId.Text = "166766754";
+            // 
+            // txtRespone
+            // 
+            this.txtRespone.Location = new System.Drawing.Point(200, 25);
+            this.txtRespone.Name = "txtRespone";
+            this.txtRespone.Size = new System.Drawing.Size(367, 180);
+            this.txtRespone.TabIndex = 2;
+            this.txtRespone.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(609, 242);
+            this.Controls.Add(this.txtRespone);
+            this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.btnMakeRequests);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -67,7 +78,8 @@ namespace VKapp
         #endregion
 
         private System.Windows.Forms.Button btnMakeRequests;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUserId;
+        private System.Windows.Forms.RichTextBox txtRespone;
     }
 }
 
