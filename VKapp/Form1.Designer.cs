@@ -36,7 +36,8 @@ namespace VKapp
             // 
             // btnMakeRequests
             // 
-            this.btnMakeRequests.Location = new System.Drawing.Point(12, 113);
+            this.btnMakeRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMakeRequests.Location = new System.Drawing.Point(717, 27);
             this.btnMakeRequests.Name = "btnMakeRequests";
             this.btnMakeRequests.Size = new System.Drawing.Size(162, 32);
             this.btnMakeRequests.TabIndex = 0;
@@ -46,17 +47,22 @@ namespace VKapp
             // 
             // txtUserId
             // 
-            this.txtUserId.Location = new System.Drawing.Point(12, 73);
+            this.txtUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUserId.Location = new System.Drawing.Point(25, 33);
             this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(162, 23);
+            this.txtUserId.Size = new System.Drawing.Size(675, 23);
             this.txtUserId.TabIndex = 1;
-            this.txtUserId.Text = "166766754";
+            this.txtUserId.Text = "itds_istu";
             // 
             // txtRespone
             // 
-            this.txtRespone.Location = new System.Drawing.Point(200, 25);
+            this.txtRespone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRespone.Location = new System.Drawing.Point(12, 65);
             this.txtRespone.Name = "txtRespone";
-            this.txtRespone.Size = new System.Drawing.Size(367, 180);
+            this.txtRespone.Size = new System.Drawing.Size(867, 490);
             this.txtRespone.TabIndex = 2;
             this.txtRespone.Text = "";
             // 
@@ -64,7 +70,7 @@ namespace VKapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 242);
+            this.ClientSize = new System.Drawing.Size(891, 567);
             this.Controls.Add(this.txtRespone);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.btnMakeRequests);
