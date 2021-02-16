@@ -18,6 +18,25 @@ namespace VKapp
         readonly HttpClient client;
         private String ACCESS_TOKEN = "4cbaad1a4cbaad1a4cbaad1aee4cccc2f644cba4cbaad1a2c937e0c573a2f87599251bd";
         private String Version = "5.130";
+
+
+        private VKGroup _group;
+
+        private VKGroup group
+        {
+            get { return _group; }
+            set { 
+                _group = value;
+                picAvatar.Load(_group.photo_100);
+                if (_group.cover != null)
+                {
+                    picCover.Load(_group.cover.images.Last().url);
+                }
+                lblGroupName.Text = _group.name;
+
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -39,13 +58,14 @@ namespace VKapp
 
         async void FetchUserInfo()
         {
-            HttpResponseMessage response = await client.GetAsync($"https://api.vk.com/method/groups.getById?group_id={txtUserId.Text}&access_token={ACCESS_TOKEN}&v={Version}");
+            HttpResponseMessage response = await client.GetAsync($"https://api.vk.com/method/groups.getById?group_id={txtUserId.Text}&fields=cover&access_token={ACCESS_TOKEN}&v={Version}");
             var content = await response.Content.ReadAsStringAsync();
 
             var VKresponse = JsonSerializer.Deserialize<VKResponse<VKGroup>>(content);
 
+            group = VKresponse.response[0];
 
-            txtRespone.Text = VKresponse.ToString();
+            txtRespone.Text = PrettyJson(content);
         }
 
         private void btnMakeRequests_Click(object sender, EventArgs e)

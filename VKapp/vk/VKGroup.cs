@@ -4,6 +4,19 @@ using System.Text;
 
 namespace VKapp
 {
+
+    class VKGRoupCoverImage
+    {
+        public int wight { get; set; }
+        public int heigth { get; set; }
+        public String url { get; set; }
+    }
+
+    class VKGroupCover
+    {
+        public int enabled { get; set; }
+        public IList<VKGRoupCoverImage> images { get; set; }
+    }
     class VKGroup
     {
         public int id { get; set; }
@@ -18,15 +31,13 @@ namespace VKapp
         public String photo_100 { get; set; }
         public String photo_200 { get; set; }
 
+        public VKGroupCover cover { get; set; }
         public override string ToString()
         {
-            return $@"
-id = {id} 
+            return $@"id = {id} 
 name = {name}
 screen_name = {screen_name}
 photo_200 = {photo_200}
-
-
 ";
         }
     }
