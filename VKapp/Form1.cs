@@ -16,7 +16,7 @@ namespace VKapp
     public partial class Form1 : Form
     {
         readonly HttpClient client;
-        private String ACCESS_TOKEN = "4cbaad1a4cbaad1a4cbaad1aee4cccc2f644cba4cbaad1a2c937e0c573a2f87599251bd";
+        private String ACCESS_TOKEN = "0d570a4f0d570a4f0d570a4feb0d21700f00d570d570a4f6d7bfe6adfc48084dfcd1c36";
         private String Version = "5.130";
 
 
