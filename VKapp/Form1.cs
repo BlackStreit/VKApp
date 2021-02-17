@@ -10,6 +10,8 @@ using System.Text.Json;
 using System.Text.Encodings;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web;
+using VKapp.vk;
 
 namespace VKapp
 {
@@ -19,8 +21,24 @@ namespace VKapp
         private String ACCESS_TOKEN = "0d570a4f0d570a4f0d570a4feb0d21700f00d570d570a4f6d7bfe6adfc48084dfcd1c36";
         private String Version = "5.130";
 
+        BindingList<VKUser> vKUsers = new BindingList<VKUser>();
 
         private VKGroup _group;
+
+        public Task<HttpResponseMessage> VKGet(String method, Dictionary<String, String> param)
+        {
+            var builder = new UriBuilder($"https://api.vk.com/method/{method}");
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            query["access_token"] = ACCESS_TOKEN;
+            query["v"] = Version;
+            foreach (var key in param.Keys)
+            {
+                query[key] = param[key];
+            }
+            builder.Query = query.ToString();
+            String url = builder.ToString();
+            return client.GetAsync(url);
+        }
 
         private VKGroup group
         {
@@ -41,6 +59,7 @@ namespace VKapp
         {
             InitializeComponent();
             client = new HttpClient();
+            grdUsers.DataSource = vKUsers;
         }
 
         public string PrettyJson(string unPrettyJson)
@@ -56,21 +75,47 @@ namespace VKapp
             return JsonSerializer.Serialize(jsonElement, options);
         }
 
-        async void FetchUserInfo()
+        async void FetchGroupInfo()
         {
-            HttpResponseMessage response = await client.GetAsync($"https://api.vk.com/method/groups.getById?group_id={txtUserId.Text}&fields=cover&access_token={ACCESS_TOKEN}&v={Version}");
+            HttpResponseMessage response = await VKGet("groups.getById", new Dictionary<string, string> {
+                ["group_id"] = txtUserId.Text,
+                ["fields"] = "cover"
+
+            }
+                );
             var content = await response.Content.ReadAsStringAsync();
 
-            var VKresponse = JsonSerializer.Deserialize<VKResponse<VKGroup>>(content);
+            var VKresponse = JsonSerializer.Deserialize<VKListResponse<VKGroup>>(content);
 
             group = VKresponse.response[0];
 
+            //txtRespone.Text = PrettyJson(content);
+        }
+
+        async void FetchMembersInfo()
+        {
+            HttpResponseMessage response = await VKGet("groups.getMembers", new Dictionary<string, string>
+            {
+                ["group_id"] = txtUserId.Text,
+                ["fields"] = "photo_100",
+                ["count"] = "10",
+                ["lang"] = "ru"
+
+            }
+                ) ;
+            var content = await response.Content.ReadAsStringAsync();
+
+            var itemsResponse = JsonSerializer.Deserialize<VKDictResponse<VKItemsResponce<VKUser>>>(content);
+
+            vKUsers.Clear();
+            vKUsers.AddRange(itemsResponse.response.items);
             txtRespone.Text = PrettyJson(content);
         }
 
         private void btnMakeRequests_Click(object sender, EventArgs e)
         {
-            FetchUserInfo();
+            FetchGroupInfo();
+            FetchMembersInfo();
             txtRespone.Text = "Гружу p_q";
         }
     }

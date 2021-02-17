@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VKapp
+namespace VKapp.vk
 {
 
     class VKGRoupCoverImage

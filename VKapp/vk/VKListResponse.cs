@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VKapp
+namespace VKapp.vk
 {
-    class VKResponse<T>
+    class VKListResponse<T>
     {
         public IList<T> response { get; set; }
 

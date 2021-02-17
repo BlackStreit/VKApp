@@ -35,8 +35,10 @@ namespace VKapp
             this.lblGroupName = new System.Windows.Forms.Label();
             this.picCover = new System.Windows.Forms.PictureBox();
             this.picAvatar = new System.Windows.Forms.PictureBox();
+            this.grdUsers = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.picCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMakeRequests
@@ -99,11 +101,24 @@ namespace VKapp
             this.picAvatar.TabIndex = 5;
             this.picAvatar.TabStop = false;
             // 
+            // grdUsers
+            // 
+            this.grdUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdUsers.Location = new System.Drawing.Point(20, 265);
+            this.grdUsers.Name = "grdUsers";
+            this.grdUsers.RowTemplate.Height = 25;
+            this.grdUsers.Size = new System.Drawing.Size(477, 289);
+            this.grdUsers.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 567);
+            this.Controls.Add(this.grdUsers);
             this.Controls.Add(this.picAvatar);
             this.Controls.Add(this.picCover);
             this.Controls.Add(this.lblGroupName);
@@ -114,6 +129,7 @@ namespace VKapp
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,6 +143,7 @@ namespace VKapp
         private System.Windows.Forms.Label lblGroupName;
         private System.Windows.Forms.PictureBox picCover;
         private System.Windows.Forms.PictureBox picAvatar;
+        private System.Windows.Forms.DataGridView grdUsers;
     }
 }
 
