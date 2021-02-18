@@ -109,9 +109,11 @@ namespace VKapp
             this.grdUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdUsers.Location = new System.Drawing.Point(20, 265);
             this.grdUsers.Name = "grdUsers";
+            this.grdUsers.ReadOnly = true;
             this.grdUsers.RowTemplate.Height = 25;
             this.grdUsers.Size = new System.Drawing.Size(477, 289);
             this.grdUsers.TabIndex = 6;
+            this.grdUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUsers_CellContentDoubleClick);
             // 
             // Form1
             // 

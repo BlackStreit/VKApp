@@ -55,6 +55,8 @@ namespace VKapp
             }
         }
 
+
+
         public Form1()
         {
             InitializeComponent();
@@ -112,11 +114,35 @@ namespace VKapp
             txtRespone.Text = PrettyJson(content);
         }
 
+        async void FetchUserInfo(String id)
+        {
+            HttpResponseMessage response = await VKGet("users.get", new Dictionary<string, string>
+            {
+                ["user_ids"] = id,
+                ["fields"] = "photo_100,counters",
+                ["count"] = "10",
+                ["lang"] = "ru"
+
+            });
+            var content = await response.Content.ReadAsStringAsync();
+
+            txtRespone.Text = PrettyJson(content);
+        }
+
         private void btnMakeRequests_Click(object sender, EventArgs e)
         {
             FetchGroupInfo();
             FetchMembersInfo();
             txtRespone.Text = "Гружу p_q";
+        }
+
+        private void grdUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtRespone.Clear();
+            if (grdUsers.CurrentCell.Value != null && int.TryParse(grdUsers.CurrentCell.Value.ToString(), out int value))
+            {
+                FetchUserInfo(grdUsers.CurrentCell.Value.ToString());
+            }
         }
     }
 }
