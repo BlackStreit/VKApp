@@ -69,7 +69,7 @@ namespace VKapp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRespone.Location = new System.Drawing.Point(504, 65);
             this.txtRespone.Name = "txtRespone";
-            this.txtRespone.Size = new System.Drawing.Size(375, 490);
+            this.txtRespone.Size = new System.Drawing.Size(375, 409);
             this.txtRespone.TabIndex = 2;
             this.txtRespone.Text = "";
             // 
@@ -111,7 +111,7 @@ namespace VKapp
             this.grdUsers.Name = "grdUsers";
             this.grdUsers.ReadOnly = true;
             this.grdUsers.RowTemplate.Height = 25;
-            this.grdUsers.Size = new System.Drawing.Size(477, 289);
+            this.grdUsers.Size = new System.Drawing.Size(477, 209);
             this.grdUsers.TabIndex = 6;
             this.grdUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUsers_CellContentDoubleClick);
             // 
@@ -119,7 +119,7 @@ namespace VKapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 567);
+            this.ClientSize = new System.Drawing.Size(891, 486);
             this.Controls.Add(this.grdUsers);
             this.Controls.Add(this.picAvatar);
             this.Controls.Add(this.picCover);

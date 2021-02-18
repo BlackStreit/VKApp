@@ -126,6 +126,9 @@ namespace VKapp
             });
             var content = await response.Content.ReadAsStringAsync();
 
+            var itemsResponse = JsonSerializer.Deserialize<VKUserResponse<VKUserInfoResponse>>(content);
+
+
             txtRespone.Text = PrettyJson(content);
         }
 
