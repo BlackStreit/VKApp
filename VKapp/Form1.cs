@@ -161,7 +161,6 @@ namespace VKapp
                 FetchUserInfo(grdUsers.CurrentCell.Value.ToString());
                 pnUserInfo.Visible = true;
             }
-            pnUserInfo.Visible = true;
         }
 
         private void btnVisible_Click(object sender, EventArgs e)
