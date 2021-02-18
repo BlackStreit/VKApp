@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
 using VKapp.vk;
+using System.Reflection;
 
 namespace VKapp
 {
@@ -55,6 +56,18 @@ namespace VKapp
             }
         }
 
+        private VKUserInfoResponse _VKUser;
+
+        private VKUserInfoResponse VkUser
+        {
+            get { return _VKUser; }
+            set { 
+                _VKUser = value;
+                lblName.Text = $"Имя: {VkUser.first_name}";
+                lblSureName.Text = $"Фамилия: {VkUser.last_name}";
+                picUserAvatar.Load(VkUser.photo_max);
+            }
+        }
 
 
         public Form1()
@@ -119,8 +132,7 @@ namespace VKapp
             HttpResponseMessage response = await VKGet("users.get", new Dictionary<string, string>
             {
                 ["user_ids"] = id,
-                ["fields"] = "photo_100,counters",
-                ["count"] = "10",
+                ["fields"] = "photo_max,counters",
                 ["lang"] = "ru"
 
             });
@@ -128,7 +140,9 @@ namespace VKapp
 
             var itemsResponse = JsonSerializer.Deserialize<VKUserResponse<VKUserInfoResponse>>(content);
 
+            pnUserInfo.Visible = true;
 
+            VkUser = itemsResponse.response[0];
             txtRespone.Text = PrettyJson(content);
         }
 
@@ -141,11 +155,18 @@ namespace VKapp
 
         private void grdUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtRespone.Clear();
             if (grdUsers.CurrentCell.Value != null && int.TryParse(grdUsers.CurrentCell.Value.ToString(), out int value))
             {
+                txtRespone.Clear();
                 FetchUserInfo(grdUsers.CurrentCell.Value.ToString());
+                pnUserInfo.Visible = true;
             }
+            pnUserInfo.Visible = true;
+        }
+
+        private void btnVisible_Click(object sender, EventArgs e)
+        {
+            pnUserInfo.Visible = false;
         }
     }
 }

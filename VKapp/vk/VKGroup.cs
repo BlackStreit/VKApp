@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -32,6 +33,8 @@ namespace VKapp.vk
         public String photo_200 { get; set; }
 
         public VKGroupCover cover { get; set; }
+
+
         public override string ToString()
         {
             return $@"id = {id} 
@@ -40,5 +43,6 @@ screen_name = {screen_name}
 photo_200 = {photo_200}
 ";
         }
+
     }
 }
