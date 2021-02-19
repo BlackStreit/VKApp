@@ -13,13 +13,14 @@ using System.Windows.Forms;
 using System.Web;
 using VKapp.vk;
 using System.Reflection;
+using System.IO;
 
 namespace VKapp
 {
     public partial class Form1 : Form
     {
         readonly HttpClient client;
-        private String ACCESS_TOKEN = "0d570a4f0d570a4f0d570a4feb0d21700f00d570d570a4f6d7bfe6adfc48084dfcd1c36";
+        private String ACCESS_TOKEN;
         private String Version = "5.130";
 
         BindingList<VKUser> vKUsers = new BindingList<VKUser>();
@@ -75,6 +76,8 @@ namespace VKapp
             InitializeComponent();
             client = new HttpClient();
             grdUsers.DataSource = vKUsers;
+            StreamReader sr = new StreamReader("TOCEN.txt");
+            ACCESS_TOKEN = sr.ReadLine();
         }
 
         public string PrettyJson(string unPrettyJson)
@@ -83,7 +86,7 @@ namespace VKapp
             {
                 WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-        };
+            };
 
             var jsonElement = JsonSerializer.Deserialize<JsonElement>(unPrettyJson);
 
@@ -153,19 +156,18 @@ namespace VKapp
             txtRespone.Text = "Гружу p_q";
         }
 
-        private void grdUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (grdUsers.CurrentCell.Value != null && int.TryParse(grdUsers.CurrentCell.Value.ToString(), out int value))
-            {
-                txtRespone.Clear();
-                FetchUserInfo(grdUsers.CurrentCell.Value.ToString());
-                pnUserInfo.Visible = true;
-            }
-        }
 
         private void btnVisible_Click(object sender, EventArgs e)
         {
             pnUserInfo.Visible = false;
+        }
+
+        private void grdUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var user = grdUsers.CurrentCell.OwningRow.DataBoundItem as VKUser;
+            txtRespone.Clear();
+            FetchUserInfo(user.id.ToString());
+            pnUserInfo.Visible = true;
         }
     }
 }

@@ -107,7 +107,7 @@ ipch/
 *.vsp
 *.vspx
 *.sap
-
+TOCEN.txt
 # Visual Studio Trace Files
 *.e2e
 

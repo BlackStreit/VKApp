@@ -37,10 +37,10 @@ namespace VKapp
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.grdUsers = new System.Windows.Forms.DataGridView();
             this.pnUserInfo = new System.Windows.Forms.Panel();
-            this.btnVisible = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSureName = new System.Windows.Forms.Label();
             this.picUserAvatar = new System.Windows.Forms.PictureBox();
+            this.lblSureName = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.btnVisible = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdUsers)).BeginInit();
@@ -119,7 +119,7 @@ namespace VKapp
             this.grdUsers.RowTemplate.Height = 25;
             this.grdUsers.Size = new System.Drawing.Size(477, 209);
             this.grdUsers.TabIndex = 6;
-            this.grdUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUsers_CellContentDoubleClick);
+            this.grdUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUsers_CellDoubleClick);
             // 
             // pnUserInfo
             // 
@@ -136,24 +136,14 @@ namespace VKapp
             this.pnUserInfo.TabIndex = 7;
             this.pnUserInfo.Visible = false;
             // 
-            // btnVisible
+            // picUserAvatar
             // 
-            this.btnVisible.Location = new System.Drawing.Point(267, 298);
-            this.btnVisible.Name = "btnVisible";
-            this.btnVisible.Size = new System.Drawing.Size(98, 37);
-            this.btnVisible.TabIndex = 0;
-            this.btnVisible.Text = "Скрыть";
-            this.btnVisible.UseVisualStyleBackColor = true;
-            this.btnVisible.Click += new System.EventHandler(this.btnVisible_Click);
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(60, 35);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 15);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "label1";
+            this.picUserAvatar.Location = new System.Drawing.Point(314, 35);
+            this.picUserAvatar.Name = "picUserAvatar";
+            this.picUserAvatar.Size = new System.Drawing.Size(256, 256);
+            this.picUserAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picUserAvatar.TabIndex = 3;
+            this.picUserAvatar.TabStop = false;
             // 
             // lblSureName
             // 
@@ -164,14 +154,24 @@ namespace VKapp
             this.lblSureName.TabIndex = 2;
             this.lblSureName.Text = "label1";
             // 
-            // picUserAvatar
+            // lblName
             // 
-            this.picUserAvatar.Location = new System.Drawing.Point(314, 35);
-            this.picUserAvatar.Name = "picUserAvatar";
-            this.picUserAvatar.Size = new System.Drawing.Size(256, 256);
-            this.picUserAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picUserAvatar.TabIndex = 3;
-            this.picUserAvatar.TabStop = false;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(60, 35);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 15);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "label1";
+            // 
+            // btnVisible
+            // 
+            this.btnVisible.Location = new System.Drawing.Point(267, 298);
+            this.btnVisible.Name = "btnVisible";
+            this.btnVisible.Size = new System.Drawing.Size(98, 37);
+            this.btnVisible.TabIndex = 0;
+            this.btnVisible.Text = "Скрыть";
+            this.btnVisible.UseVisualStyleBackColor = true;
+            this.btnVisible.Click += new System.EventHandler(this.btnVisible_Click);
             // 
             // Form1
             // 
